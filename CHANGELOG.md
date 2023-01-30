@@ -1,7 +1,7 @@
 # CHANGELOG
 
 
-## vN.N.N
+## v3.7.1
 * issue #2377: Add Outbrain Smartfeed experiment
 * issue #2382: Add verification to tmz-web deploy
 * issue #2459: per-vendor consent escape hatch
