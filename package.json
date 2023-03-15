@@ -1,0 +1,19 @@
+{
+  "name": "@efjacobson/scratch",
+  "version": "0.0.1",
+  "description": "assembled or made from whatever is available, and so unlikely to be of the highest quality.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efjacobson/scratch.git"
+  },
+  "author": "efjacobson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/efjacobson/scratch/issues"
+  },
+  "homepage": "https://github.com/efjacobson/scratch#readme"
+}
