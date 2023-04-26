@@ -19,7 +19,7 @@ jobs:
           repository: ${{ github.repository }}
       - name: setup-wiki
         run: |
-          cd ..
+          cd ../..
           mkdir -p "$GITHUB_REPOSITORY.wiki"
           cd "$GITHUB_REPOSITORY.wiki"
       - name: checkout-wiki
@@ -28,5 +28,5 @@ jobs:
           repository: '${{ github.repository }}.wiki'
       - name: log
         run: |
-          cd ..
+          cd ../..
           ls -R
