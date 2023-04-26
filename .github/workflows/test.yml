@@ -12,3 +12,5 @@ jobs:
       - name: checkout wiki
         run: |
           echo "$GITHUB_REPOSITORY"
+          pwd
+          ls
