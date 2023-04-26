@@ -9,12 +9,24 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: setup-repo
+        run: |
+          mkdir -p "$GITHUB_REPOSITORY"
+          cd "$GITHUB_REPOSITORY"
+      - name: checkout-repo
+        uses: actions/checkout@v3.5.2
+        with:
+          repository: ${{ github.repository }}
+      - name: setup-wiki
+        run: |
+          cd ..
+          mkdir -p "$GITHUB_REPOSITORY.wiki"
+          cd "$GITHUB_REPOSITORY.wiki"
+      - name: checkout-wiki
         uses: actions/checkout@v3.5.2
         with:
           repository: '${{ github.repository }}.wiki'
       - name: log
         run: |
-          echo "$GITHUB_REPOSITORY"
-          pwd
-          ls
+          cd ..
+          ls -R
