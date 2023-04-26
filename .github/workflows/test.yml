@@ -1,12 +1,11 @@
-name: test
+name: sync-wiki
 
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
-  test:
+  sync-wiki:
     runs-on: ubuntu-latest
     steps:
       - name: checkout-repo
