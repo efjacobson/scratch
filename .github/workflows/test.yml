@@ -19,6 +19,14 @@ jobs:
         with:
           repository: '${{ github.repository }}.wiki'
           path: wiki
-      - name: log
+      - name: sync-wiki
         run: |
-          ls -laR
+          mv wiki/.git .
+          rm -rf wiki/*
+          mv .git wiki/
+          cp -r repo/wiki/content/* wiki/
+          cd wiki
+          [ -z "$(git status --porcelain=v1 2>/dev/null)" ] && echo 'no changes' && exit
+          git add -A
+          git commit -m "github action: sync wiki"
+          git push origin master
