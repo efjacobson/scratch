@@ -11,22 +11,30 @@ jobs:
     steps:
       - name: setup-repo
         run: |
+          pwd
+          echo "$GITHUB_REPOSITORY"
           mkdir -p "$GITHUB_REPOSITORY"
           cd "$GITHUB_REPOSITORY"
+          pwd
       - name: checkout-repo
         uses: actions/checkout@v3.5.2
         with:
           repository: ${{ github.repository }}
       - name: setup-wiki
         run: |
+          pwd
           cd ../..
+          pwd
           mkdir -p "$GITHUB_REPOSITORY.wiki"
           cd "$GITHUB_REPOSITORY.wiki"
+          pwd
       - name: checkout-wiki
         uses: actions/checkout@v3.5.2
         with:
           repository: '${{ github.repository }}.wiki'
       - name: log
         run: |
+          pwd
           cd ../..
+          pwd
           ls -R
