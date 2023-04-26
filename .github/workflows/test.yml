@@ -27,6 +27,8 @@ jobs:
           cp -r repo/wiki/content/* wiki/
           cd wiki
           [ -z "$(git status --porcelain=v1 2>/dev/null)" ] && echo 'no changes' && exit
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add -A
           git commit -m "github action: sync wiki"
           git push origin master
