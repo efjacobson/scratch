@@ -1,1 +1,1 @@
-[do the thing](/documents/sample.pdf)
+[do the thing](documents/sample.pdf)
