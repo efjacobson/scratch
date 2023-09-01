@@ -1,21 +1,29 @@
 on:
-  pull_request:
-    branches:
-      - main
-      - master
+  workflow_call:
+    inputs:
+      incoming_ref:
+        type: string
+        required: true
+      current_ref:
+        type: string
+        required: false
+        default: main
 
 jobs:
-  test-thing:
-    if: github.event.pull_request.draft == false
+  do_reusable_thing:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: main
+          ref: ${{ inputs.current_ref }}
       - run: |
+          git status
           echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.incoming_ref }}
       - run: |
+          git status
           if [ "$TIMESTAMP" == "$(date -u +%N)" ]; then
             echo 'well that seems very unlikely'
             exit 1
