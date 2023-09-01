@@ -1,13 +1,12 @@
 on:
   workflow_call:
     inputs:
-      incoming_ref:
+      base_ref:
         type: string
         required: true
-      current_ref:
+      head_ref:
         type: string
-        required: false
-        default: main
+        required: true
 
 jobs:
   do_reusable_thing:
@@ -15,15 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.current_ref }}
+          ref: ${{ inputs.base_ref }}
       - run: |
-          cat whoami.wtf
+          echo "base_ref whoami: $(cat whoami.wtf)"
           echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.incoming_ref }}
+          ref: ${{ inputs.head_ref }}
       - run: |
-          cat whoami.wtf
+          echo "head_ref whoami: $(cat whoami.wtf)"
           if [ "$TIMESTAMP" == "$(date -u +%N)" ]; then
             echo 'well that seems very unlikely'
             exit 1
