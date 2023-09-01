@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  use_reusable_thing:
+    if: github.event.pull_request.draft == false
+    uses: efjacobson/scratch/.github/workflows/reusable.yaml@main
+    with:
+      current_ref: ${{ github.event.pull_request.head.sha }}
+      incoming_ref: ${{ github.sha }}
