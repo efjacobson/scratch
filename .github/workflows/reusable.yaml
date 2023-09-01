@@ -17,13 +17,13 @@ jobs:
         with:
           ref: ${{ inputs.current_ref }}
       - run: |
-          git --no-pager branch
+          cat whoami.wtf
           echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
         with:
           ref: ${{ inputs.incoming_ref }}
       - run: |
-          git --no-pager branch
+          cat whoami.wtf
           if [ "$TIMESTAMP" == "$(date -u +%N)" ]; then
             echo 'well that seems very unlikely'
             exit 1
