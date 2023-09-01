@@ -2,6 +2,7 @@ on:
   pull_request:
     branches:
       - master
+      - main
 
 jobs:
   test-thing:
@@ -10,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: master
+          ref: main
       - run: |
           echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
