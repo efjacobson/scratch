@@ -8,5 +8,5 @@ jobs:
     if: github.event.pull_request.draft == false
     uses: efjacobson/scratch/.github/workflows/reusable.yaml@main
     with:
-      current_ref: ${{ github.event.pull_request.head.sha }}
+      # current_ref: ${{ github.event.pull_request.head.sha }}
       incoming_ref: ${{ github.sha }}
