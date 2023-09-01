@@ -1,9 +1,10 @@
 on:
-  pull_request:
-    branches:
-      - main
-      - master
-      - main
+  workflow_call:
+    inputs:
+      default_branch:
+        type: string
+        required: false
+        default: main
 
 jobs:
   test-thing:
@@ -12,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: main
+          ref: ${{ inputs.default_branch }}
       - run: |
           echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
