@@ -1,33 +1,23 @@
 name: sync-wiki
 
 on:
-  push:
-    branches: [ "main" ]
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  sync-wiki:
+  test-thing:
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
-      - name: checkout-repo
-        uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
         with:
-          repository: ${{ github.repository }}
-          path: repo
-      - name: checkout-wiki
-        uses: actions/checkout@v3.5.2
-        with:
-          repository: '${{ github.repository }}.wiki'
-          path: wiki
-      - name: sync-wiki
-        run: |
-          mv wiki/.git .
-          rm -rf wiki/*
-          mv .git wiki/
-          cp -r repo/wiki/content/* wiki/
-          cd wiki
-          [ -z "$(git status --porcelain=v1 2>/dev/null)" ] && echo 'no changes' && exit
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add -A
-          git commit -m "github action: sync wiki"
-          git push origin master
+          ref: master
+      - run: |
+          echo "TIMESTAMP=$(date -u +%FT%R:%MZ)" >>"$GITHUB_ENV"
+      - uses: actions/checkout@v3
+      - run: |
+          if [ "$TIMESTAMP" == "$(date -u +%FT%R:%MZ)" ]; then
+            echo 'well that seems very unlikely'
+            exit 1
+          fi
