@@ -12,10 +12,10 @@ jobs:
         with:
           ref: master
       - run: |
-          echo "TIMESTAMP=$(date -u +%FT%R:%MZ)" >>"$GITHUB_ENV"
+          echo "TIMESTAMP=$(date -u +%N)" >>"$GITHUB_ENV"
       - uses: actions/checkout@v3
       - run: |
-          if [ "$TIMESTAMP" == "$(date -u +%FT%R:%MZ)" ]; then
+          if [ "$TIMESTAMP" == "$(date -u +%N)" ]; then
             echo 'well that seems very unlikely'
             exit 1
           fi
