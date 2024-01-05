@@ -14,13 +14,13 @@ jobs:
     steps:
       - name: 'dolog'
         run: |
-          echo "github: ${{ github }}"
-          echo "env: ${{ env }}"
-          echo "vars: ${{ vars }}"
-          echo "job: ${{ job }}"
-          echo "steps: {{ steps }}"
-          echo "runner: {{ runner }}"
-          echo "strategy: {{ strategy }}"
-          echo "matrix: {{ matrix }}"
-          echo "needs: {{ needs }}"
-          echo "inputs: {{ inputs }}"
+          echo "github: ${{ toJson(github) }}"
+          echo "env: ${{ toJson(env) }}"
+          echo "vars: ${{ toJson(vars) }}"
+          echo "job: ${{ toJson(job) }}"
+          echo "steps: ${{ toJson(steps) }}"
+          echo "runner: ${{ toJson(runner) }}"
+          echo "strategy: ${{ toJson(strategy) }}"
+          echo "matrix: ${{ toJson(matrix) }}"
+          echo "needs: ${{ toJson(needs) }}"
+          echo "inputs: ${{ toJson(inputs) }}"
