@@ -1,0 +1,26 @@
+name: log
+on:
+  workflow_dispatch:
+    inputs:
+      foo:
+        description: "bar"
+        required: true
+        default: "baz"
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log
+        run: |
+          echo "github: ${{ github }}"
+          echo "env: ${{ env }}"
+          echo "vars: ${{ vars }}"
+          echo "job: ${{ job }}"
+          echo "jobs: ${{ jobs }}"
+          echo "steps: {{ steps }}"
+          echo "runner: {{ runner }}"
+          echo "strategy: {{ strategy }}"
+          echo "matrix: {{ matrix }}"
+          echo "needs: {{ needs }}"
+          echo "inputs: {{ inputs }}"
