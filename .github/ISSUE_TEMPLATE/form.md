@@ -1,8 +1,3 @@
----
-name: 'Form Bug Report'
-title: 'Form Bug Report foo'
-about: 'found a bug?'
----
 name: Form Bug Report
 description: File a bug report.
 title: "[Bug]: "
