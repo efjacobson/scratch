@@ -16,4 +16,6 @@ jobs:
         run: |
           set -x
           echo "hI"
+          ls
           echo "good times"
+          ls
