@@ -16,6 +16,10 @@ jobs:
         shell: bash -euxo pipefail {0}
         run: |
           echo "hI"
+          sleep 1
           echo "hI2"
+          sleep 1
           echo "good times"
+          sleep 1
           echo "h3"
+          sleep 1
