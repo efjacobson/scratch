@@ -17,7 +17,5 @@ jobs:
         run: |
           echo "hI"
           echo "hI2"
-          ls
           echo "good times"
-          ls
           echo "h3"
