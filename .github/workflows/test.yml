@@ -15,13 +15,5 @@ jobs:
       - name: 'dolog'
         run: |
           set -x
-          echo "github: ${{ toJson(github) }}"
-          echo "env: ${{ toJson(env) }}"
-          echo "vars: ${{ toJson(vars) }}"
-          echo "job: ${{ toJson(job) }}"
-          echo "steps: ${{ toJson(steps) }}"
-          echo "runner: ${{ toJson(runner) }}"
-          echo "strategy: ${{ toJson(strategy) }}"
-          echo "matrix: ${{ toJson(matrix) }}"
-          echo "needs: ${{ toJson(needs) }}"
-          echo "inputs: ${{ toJson(inputs) }}"
+          echo "hI"
+          echo "good times"
