@@ -13,8 +13,8 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - name: 'dolog'
+        shell: bash -euxo pipefail
         run: |
-          set -x
           echo "hI"
           ls
           echo "good times"
